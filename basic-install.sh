@@ -14,4 +14,20 @@ pip install https://github.com/graphite-project/graphite-web/tarball/master
 
 cp graphite.conf /etc/apache2/sites-available/graphite.conf
 
+### configuring path
 
+GRAPHITE_HOME='/opt/graphite'
+GRAPHITE_CONF="${GRAPHITE_HOME}/conf"
+GRAPHITE_STORAGE="${GRAPHITE_HOME}/storage"
+
+### set up a new database and create the initial schema
+PYTHONPATH=$GRAPHITE_HOME/webapp django-admin.py migrate --settings=graphite.settings --run-syncdb
+
+### configuring graphite
+
+#cd $GRAPHITE_CONF
+#cp graphite.wsgi.example graphite.wsgi
+#cp carbon.conf.example carbon.conf
+#cp storage-schemas.conf.example storage-schemas.conf
+
+cp storage-aggregation.conf $GRAPHITE_CONF/storage-aggregation.conf
