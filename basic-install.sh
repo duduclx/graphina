@@ -1,14 +1,21 @@
 ### update and install needed packages
 
 apt-get update -y
-apt-get install python-dev libcairo2-dev libffi-dev python-pip fontconfig apache2 libapache2-mod-wsgi
+apt-get install python-dev libcairo2-dev libffi-dev python-pip fontconfig apache2 libapache2-mod-wsgi git
 
-### installing graphite-web carbon and whisper from pip
+### installing using github source
 
-export PYTHONPATH="/opt/graphite/lib/:/opt/graphite/webapp/"
-pip install https://github.com/graphite-project/whisper/tarball/master
-pip install https://github.com/graphite-project/carbon/tarball/master
-pip install https://github.com/graphite-project/graphite-web/tarball/master
+wget https://github.com/graphite-project/graphite-web.git
+wget https://github.com/graphite-project/carbon.git
+wget https://github.com/graphite-project/whisper.git
+
+cd graphite-web
+python setup.py install
+cd ../carbon
+python setup.py install
+cd ../whisper
+python setup.py install
+cd ..
 
 ### installing vhost conf for apache
 
@@ -25,9 +32,10 @@ PYTHONPATH=$GRAPHITE_HOME/webapp django-admin.py migrate --settings=graphite.set
 
 ### configuring graphite
 
-#cd $GRAPHITE_CONF
-#cp graphite.wsgi.example graphite.wsgi
-#cp carbon.conf.example carbon.conf
-#cp storage-schemas.conf.example storage-schemas.conf
+echo "[stats]\npattern = ^stats.*\nretentions = 10:2160,60:10080,600:262974" >> $GRAPHITE_CONF/storage-schemas.conf
+
+cp $GRAPHITE_CONF/graphite.wsgi.example $GRAPHITE_CONF/graphite.wsgi
+cp $GRAPHITE_CONF/carbon.conf.example $GRAPHITE_CONF/carbon.conf
+cp $GRAPHITE_CONF/storage-schemas.conf.example $GRAPHITE_CONF/storage-schemas.conf
 
 cp storage-aggregation.conf $GRAPHITE_CONF/storage-aggregation.conf
