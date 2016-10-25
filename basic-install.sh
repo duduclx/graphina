@@ -1,3 +1,16 @@
+### configuring path
+
+GRAPHITE_HOME='/opt/graphite'
+GRAPHITE_CONF="${GRAPHITE_HOME}/conf"
+GRAPHITE_STORAGE="${GRAPHITE_HOME}/storage"
+
+### check existing installation
+
+if [[ -d $GRAPHITE_HOME ]]; then
+  echo "Looks like you already have a Graphite installation in ${GRAPHITE_HOME}, aborting."
+  exit 1
+fi
+
 ### update and install needed packages
 
 apt-get update -y
@@ -20,12 +33,6 @@ cd ..
 ### installing vhost conf for apache
 
 cp graphite.conf /etc/apache2/sites-available/graphite.conf
-
-### configuring path
-
-GRAPHITE_HOME='/opt/graphite'
-GRAPHITE_CONF="${GRAPHITE_HOME}/conf"
-GRAPHITE_STORAGE="${GRAPHITE_HOME}/storage"
 
 ### set up a new database and create the initial schema
 PYTHONPATH=$GRAPHITE_HOME/webapp django-admin.py migrate --settings=graphite.settings --run-syncdb
