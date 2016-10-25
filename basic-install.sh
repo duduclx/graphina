@@ -18,9 +18,9 @@ apt-get install python-dev libcairo2-dev libffi-dev python-pip fontconfig apache
 
 ### installing using github source
 
-wget https://github.com/graphite-project/graphite-web.git
-wget https://github.com/graphite-project/carbon.git
-wget https://github.com/graphite-project/whisper.git
+git clone https://github.com/graphite-project/graphite-web.git
+git clone https://github.com/graphite-project/carbon.git
+git clone https://github.com/graphite-project/whisper.git
 
 cd graphite-web
 python setup.py install
