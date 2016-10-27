@@ -1,5 +1,8 @@
 # graphina
-debian graphite and grafana installation
+to use with debian 64bits (amd64)
+graphite and grafana installation
+
+no grafana packqge for I386.
 
 This project is not ready to use at this time.
 
@@ -16,3 +19,9 @@ cd graphina
 chmod a+x basic-install.sh
 
 ./basic-install.sh
+
+to remove the installer, run:
+
+cd ~
+
+rm -R graphina
