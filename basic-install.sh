@@ -81,14 +81,14 @@ rm -R graphina
 rm grafana_3.1.1-1470047149_amd64.deb
 
 ### more info
-clear
-echo "
-graphite web interface is located at \n
-http://127.0.0.1:8085 \n
-\n
-grafana web interface is located at \n
-http://127.0.0.1:3000 \n
-"
+#clear
+#echo "
+#graphite web interface is located at \n
+#http://127.0.0.1:8085 \n
+#\n
+#grafana web interface is located at \n
+#http://127.0.0.1:3000 \n
+#"
 
 
 
