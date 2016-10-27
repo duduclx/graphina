@@ -59,7 +59,7 @@ mv $GRAPHITE_CONF/*.example $GRAPHITE_CONF/examples/
 cp local_settings.py $GRAPHITE_SETTING/local_settings.py
 
 # Setup the Django database
-cd ${GRAPHITE_HOME}/webapp
+cd ${GRAPHITE_HOME}/webapp/graphite
 python manage.py syncdb --noinput
 chown www-data:www-data ${GRAPHITE_STORAGE}/graphite.db
 
