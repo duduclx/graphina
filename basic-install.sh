@@ -58,13 +58,10 @@ mv $GRAPHITE_CONF/*.example $GRAPHITE_CONF/examples/
 ### you may need to edit it for email and more stuff
 cp local_settings.py $GRAPHITE_SETTING/local_settings.py
 
-### running graphite
-a2dissite 000-default
-a2ensite graphite
-a2enmod ssl
-a2enmod socache_shmcb
-a2enmod rewrite
-service apache2 reload
+# Setup the Django database
+cd ${GRAPHITE_HOME}/webapp
+python manage.py syncdb --noinput
+chown www-data:www-data ${GRAPHITE_STORAGE}/graphite.db
 
 ### installing grafana
 wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.1.1-1470047149_amd64.deb
@@ -75,26 +72,17 @@ dpkg -i grafana_3.1.1-1470047149_amd64.deb
 service grafana-server start
 update-rc.d grafana-server defaults
 
-### restart apache
+### running services
+a2dissite 000-default
+a2ensite graphite
+a2enmod ssl
+a2enmod socache_shmcb
+a2enmod rewrite
 /bin/systemctl reload
 /bin/systemctl enable grafana-server
 /bin/systemctl start grafana-server
 service apache2 reload
 service apache2 restart
-
-### removing install tools
-#rm -R graphina
-#rm grafana_3.1.1-1470047149_amd64.deb
-
-### more info
-#clear
-#echo "
-#graphite web interface is located at \n
-#http://127.0.0.1 \n
-#\n
-#grafana web interface is located at \n
-#http://127.0.0.1:3000 \n
-#"
 
 
 
