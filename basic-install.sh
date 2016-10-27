@@ -42,6 +42,8 @@ PYTHONPATH=$GRAPHITE_HOME/webapp django-admin.py migrate --settings=graphite.set
 
 cp $GRAPHITE_CONF/graphite.wsgi.example $GRAPHITE_CONF/graphite.wsgi
 cp $GRAPHITE_CONF/carbon.conf.example $GRAPHITE_CONF/carbon.conf
+cp $GRAPHITE_CONF/dashboard.conf.example $GRAPHITE_CONF/dashboard.conf
+cp $GRAPHITE_CONF/graphTemplates.conf.example $GRAPHITE_CONF/graphTemplates.conf
 cp $GRAPHITE_CONF/storage-schemas.conf.example $GRAPHITE_CONF/storage-schemas.conf
 
 echo "[stats]\npattern = ^stats.*\nretentions = 10:2160,60:10080,600:262974" >> $GRAPHITE_CONF/storage-schemas.conf
@@ -53,7 +55,8 @@ mkdir $GRAPHITE_CONF/examples
 mv $GRAPHITE_CONF/*.example $GRAPHITE_CONF/examples/
 
 ### need minimalist local_settings
-#cp $GRAPHITE_SETTING/local_settings.py.example $GRAPHITE_SETTING/local_settings.py
+### you may need to edit it for email and more stuff
+cp local_settings.py $GRAPHITE_SETTING/local_settings.py
 
 ### running graphite
 a2dissite 000-default
@@ -72,3 +75,20 @@ dpkg -i grafana_3.1.1-1470047149_amd64.deb
 ### start grafana and make it running at boot
 service grafana-server start
 update-rc.d grafana-server defaults
+
+### removing install tools
+rm -R graphina
+rm grafana_3.1.1-1470047149_amd64.deb
+
+### more info
+clear
+echo "
+graphite web interface is located at \n
+http://127.0.0.1:8085 \n
+\n
+grafana web interface is located at \n
+http://127.0.0.1:3000 \n
+"
+
+
+
