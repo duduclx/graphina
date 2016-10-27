@@ -17,17 +17,21 @@ apt-get update -y
 apt-get install python-dev libcairo2-dev libffi-dev python-pip fontconfig apache2 libapache2-mod-wsgi git
 
 ### installing using github source
-git clone https://github.com/graphite-project/graphite-web.git
-git clone https://github.com/graphite-project/carbon.git
-git clone https://github.com/graphite-project/whisper.git
+#git clone https://github.com/graphite-project/graphite-web.git
+#git clone https://github.com/graphite-project/carbon.git
+#git clone https://github.com/graphite-project/whisper.git
 
-cd graphite-web
-python setup.py install
-cd ../carbon
-python setup.py install
-cd ../whisper
-python setup.py install
-cd ..
+#cd graphite-web
+#python setup.py install
+#cd ../carbon
+#python setup.py install
+#cd ../whisper
+#python setup.py install
+#cd ..
+
+pip install whisper
+pip install carbon
+pip install graphite-web
 
 ### installing vhost conf for apache
 cp graphite.conf /etc/apache2/sites-available/graphite.conf
@@ -74,6 +78,7 @@ update-rc.d grafana-server defaults
 ### restart apache
 /bin/systemctl reload
 /bin/systemctl enable grafana-server
+/bin/systemctl start grafana-server
 service apache2 reload
 service apache2 restart
 
@@ -85,7 +90,7 @@ service apache2 restart
 #clear
 #echo "
 #graphite web interface is located at \n
-#http://127.0.0.1:8085 \n
+#http://127.0.0.1 \n
 #\n
 #grafana web interface is located at \n
 #http://127.0.0.1:3000 \n
