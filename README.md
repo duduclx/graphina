@@ -8,7 +8,11 @@ Come back later
 cheers
 
 to proceed to installation, type in your terminal:
+
 git clone https://github.com/duduclx/graphina.git
+
 cd graphina
+
 chmod a+x basic-install.sh
+
 ./basic-install.sh
