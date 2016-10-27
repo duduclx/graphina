@@ -77,8 +77,8 @@ service grafana-server start
 update-rc.d grafana-server defaults
 
 ### removing install tools
-rm -R graphina
-rm grafana_3.1.1-1470047149_amd64.deb
+#rm -R graphina
+#rm grafana_3.1.1-1470047149_amd64.deb
 
 ### more info
 #clear
