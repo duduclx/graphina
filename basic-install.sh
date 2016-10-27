@@ -34,8 +34,6 @@ cd ..
 ### installing vhost conf for apache
 
 cp graphite.conf /etc/apache2/sites-available/graphite.conf
-a2ensite graphite
-service apache2 reload
 
 ### set up a new database and create the initial schema
 PYTHONPATH=$GRAPHITE_HOME/webapp django-admin.py migrate --settings=graphite.settings --run-syncdb
@@ -56,6 +54,14 @@ mv $GRAPHITE_CONF/*.example $GRAPHITE_CONF/examples/
 
 ### need minimalist local_settings
 #cp $GRAPHITE_SETTING/local_settings.py.example $GRAPHITE_SETTING/local_settings.py
+
+### running graphite
+a2dissite 000-default
+a2ensite graphite
+a2enmod ssl
+a2enmod socache_shmcb
+a2enmod rewrite
+service apache2 reload
 
 ### installing grafana
 
