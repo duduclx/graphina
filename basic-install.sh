@@ -50,6 +50,19 @@ echo "[stats]\npattern = ^stats.*\nretentions = 10:2160,60:10080,600:262974" >> 
 
 cp storage-aggregation.conf $GRAPHITE_CONF/storage-aggregation.conf
 
+### moving examples
+mkdir $GRAPHITE_CONF/examples
+mv $GRAPHITE_CONF/*.example $GRAPHITE_CONF/examples/
+
 ### need minimalist local_settings
 #cp $GRAPHITE_SETTING/local_settings.py.example $GRAPHITE_SETTING/local_settings.py
 
+### installing grafana
+
+wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.1.1-1470047149_amd64.deb
+apt-get install -y adduser libfontconfig
+dpkg -i grafana_3.1.1-1470047149_amd64.deb
+
+### start grafana and make it running at boot
+service grafana-server start
+update-rc.d grafana-server defaults
