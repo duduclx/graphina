@@ -37,7 +37,7 @@ pip install graphite-web
 cp graphite.conf /etc/apache2/sites-available/graphite.conf
 
 ### set up a new database and create the initial schema
-PYTHONPATH=$GRAPHITE_HOME/webapp django-admin.py migrate --settings=graphite.settings --run-syncdb
+#PYTHONPATH=$GRAPHITE_HOME/webapp django-admin.py migrate --settings=graphite.settings --run-syncdb
 
 ### configuring graphite
 cp $GRAPHITE_CONF/graphite.wsgi.example $GRAPHITE_CONF/graphite.wsgi
