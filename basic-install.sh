@@ -16,11 +16,12 @@ fi
 ### update and install needed packages
 apt-get update -y
 apt-get install python-dev libcairo2-dev libffi-dev fontconfig apache2 libapache2-mod-wsgi
-apt-get install python-cairo python-django python-pip python-pyparsing python-django-tagging python-memcache
+apt-get install python-cairo python-django python-pip python-pyparsing python-memcache
+#apt-get install python-django-tagging
 apt-get install uwsgi uwsgi-plugin-python
 
 pip install pytz
-
+pip install 'django-tagging<0.4'
 ### installing using github source
 #git clone https://github.com/graphite-project/graphite-web.git
 #git clone https://github.com/graphite-project/carbon.git
@@ -86,6 +87,10 @@ export PYTHONPATH=/usr/local/lib/python2.7/site-packages
 
 # Setup the Django database
 cd ${GRAPHITE_HOME}/webapp/graphite
+# edit $GRAPHITE_SETTING/local_settings.py with generated secretkey
+# python manage.py generate_secret_key [--replace] [secretkey.txt]
+# SECRET=$( cat secretkey.txt )
+# sed 's/mysecretkey/$SECRET/' $GRAPHITE_SETTING/local_settings.py
 python manage.py syncdb --noinput
 chown www-data:www-data ${GRAPHITE_STORAGE}/graphite.db
 chown -R www-data:www-data /opt/graphite/{storage,webapp}
