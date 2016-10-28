@@ -65,7 +65,7 @@ MEMCACHE_HOSTS = ['127.0.0.1:11211']
 #MEMCACHE_KEY_PREFIX = 'graphite'
 
 # Set URL_PREFIX when deploying graphite-web to a non-root location
-#URL_PREFIX = '/graphite'
+URL_PREFIX = '/graphite'
 
 # Graphite uses Django Tagging to support tags in Events. By default each
 # tag is limited to 50 characters in length.
@@ -80,31 +80,31 @@ MEMCACHE_HOSTS = ['127.0.0.1:11211']
 #
 # Change only GRAPHITE_ROOT if your install is merely shifted from /opt/graphite
 # to somewhere else
-#GRAPHITE_ROOT = '/opt/graphite'
+GRAPHITE_ROOT = '/opt/graphite'
 
 # Most installs done outside of a separate tree such as /opt/graphite will
 # need to change these settings. Note that the default settings for each
 # of these is relative to GRAPHITE_ROOT.
-#CONF_DIR = '/opt/graphite/conf'
-#STORAGE_DIR = '/opt/graphite/storage'
-#STATIC_ROOT = '/opt/graphite/static'
-#LOG_DIR = '/opt/graphite/storage/log/webapp'
-#INDEX_FILE = '/opt/graphite/storage/index'     # Search index file
+CONF_DIR = '/opt/graphite/conf'
+STORAGE_DIR = '/opt/graphite/storage'
+STATIC_ROOT = '/opt/graphite/static'
+LOG_DIR = '/opt/graphite/storage/log/webapp'
+INDEX_FILE = '/opt/graphite/storage/index'     # Search index file
 
 # To further or fully customize the paths, modify the following. Note that the
 # default settings for each of these are relative to CONF_DIR and STORAGE_DIR
 #
 ## Webapp config files
-#DASHBOARD_CONF = '/opt/graphite/conf/dashboard.conf'
-#GRAPHTEMPLATES_CONF = '/opt/graphite/conf/graphTemplates.conf'
+DASHBOARD_CONF = '/opt/graphite/conf/dashboard.conf'
+GRAPHTEMPLATES_CONF = '/opt/graphite/conf/graphTemplates.conf'
 
 ## Data directories
 #
 # NOTE: If any directory is unreadable in STANDARD_DIRS it will break metric browsing
 #
-#CERES_DIR = '/opt/graphite/storage/ceres'
-#WHISPER_DIR = '/opt/graphite/storage/whisper'
-#RRD_DIR = '/opt/graphite/storage/rrd'
+CERES_DIR = '/opt/graphite/storage/ceres'
+WHISPER_DIR = '/opt/graphite/storage/whisper'
+RRD_DIR = '/opt/graphite/storage/rrd'
 #
 # Data directories using the "Standard" metrics finder (i.e. not Ceres)
 #STANDARD_DIRS = [WHISPER_DIR, RRD_DIR] # Default: set from the above variables
@@ -176,17 +176,17 @@ MEMCACHE_HOSTS = ['127.0.0.1:11211']
 # This section provides 3 different authorization models, of varying strictness.
 
 # If set to True, users must be logged in to save or delete dashboards. Defaults to False
-#DASHBOARD_REQUIRE_AUTHENTICATION = True
+DASHBOARD_REQUIRE_AUTHENTICATION = True
 
 # If set to the name of a user group, dashboards can be saved and deleted by any user in this
 # group.  Groups can be set in the Django Admin app, or in LDAP.  Defaults to None.
 # NOTE: Ignored if DASHBOARD_REQUIRE_AUTHENTICATION is not set
-#DASHBOARD_REQUIRE_EDIT_GROUP = 'dashboard-editors-group'
+DASHBOARD_REQUIRE_EDIT_GROUP = 'dashboard-editors-group'
 
 # If set to True, dashboards can be saved or deleted by any user having the appropriate
 # (change or delete) permission (as set in the Django Admin app).  Defaults to False
 # NOTE: Ignored if DASHBOARD_REQUIRE_AUTHENTICATION is not set
-#DASHBOARD_REQUIRE_PERMISSIONS = True
+DASHBOARD_REQUIRE_PERMISSIONS = True
 
 
 ##########################
@@ -212,16 +212,16 @@ MEMCACHE_HOSTS = ['127.0.0.1:11211']
 # The default is 'django.db.backends.sqlite3' with file 'graphite.db'
 # located in STORAGE_DIR
 #
-#DATABASES = {
-#    'default': {
-#        'NAME': '/opt/graphite/storage/graphite.db',
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'USER': '',
-#        'PASSWORD': '',
-#        'HOST': '',
-#        'PORT': ''
-#    }
-#}
+DATABASES = {
+    'default': {
+        'NAME': '/opt/graphite/storage/graphite.db',
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'graphite',
+        'PASSWORD': 'graphite_password',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
+  }
+}
 #
 
 
@@ -318,7 +318,7 @@ MEMCACHE_HOSTS = ['127.0.0.1:11211']
 #####################################
 # Uncomment the following line for direct access to Django settings such as
 # MIDDLEWARE_CLASSES or APPS
-#from graphite.app_settings import *
+from graphite.app_settings import *
 
     Contact GitHub API Training Shop Blog About 
 
