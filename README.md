@@ -10,10 +10,19 @@ no grafana package for I386.
 # Come back later
 # cheers
 
+# task list:
+- [] have a working graphite
+- [] have a working collectd
+- [x] have a working grafana
+- [] have custom config file
+- [] add examples/script to feed data
+- [] add custom dashbord template
+
 # details:
 lastest graphite with:
 - carbon
 - whisper
+- collectd
 - mysql
 and grafana 3.1.1 with:
 - custom dashboard ??
