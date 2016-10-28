@@ -4,7 +4,7 @@
 echo "Please type your graphite server IP"
 echo "something like 192.168.2.99"
 echo "======================="
-read -p IP
+read -p "type here" IP
 
 # editing graphite.conf
 sed 's/myserverIP/$IP/' graphite.conf
