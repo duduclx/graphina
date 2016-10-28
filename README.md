@@ -1,14 +1,7 @@
 # graphina
-to use with debian 64bits (amd64)
-
-tested on debian 8 jessie amd64
-
-no grafana package for I386.
+> to use with debian 64bits (amd64) and tested on debian 8 jessie amd64
 
 # !! This project is not ready to use at this time !! #
-Come back later
-
-cheers
 
 # task list:
 - [ ] have a working graphite
