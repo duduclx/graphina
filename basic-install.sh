@@ -14,7 +14,7 @@ fi
 
 ### update and install needed packages
 apt-get update -y
-apt-get install python-dev libcairo2-dev libffi-dev python-pip fontconfig apache2 libapache2-mod-wsgi git
+apt-get install python-dev libcairo2-dev libffi-dev python-pip fontconfig apache2 libapache2-mod-wsgi
 
 ### installing using github source
 #git clone https://github.com/graphite-project/graphite-web.git
@@ -61,9 +61,32 @@ mysql -u root -p
 #enter password then
 create database graphite;
 create user 'graphite'@'localhost' identified by 'graphite_password';
-grant all on testdb.* to 'graphite';
+grant all on graphite.* to 'graphite';
 exit
 #default port 3306
+
+### installing phpmyadmin
+apt-get install mcrypt
+service apache2 restart
+apt-get install phpmyadmin
+#Select “apache2.”
+#When asked to configure database for phpmyadmin with dbconfig-common, select yes
+
+### testing graphite-mysql
+#wget https://storage.googleapis.com/golang/go1.7.3.linux-amd64.tar.gz
+#tar -C /usr/local -xzf go1.7.3.linux-amd64.tar.gz
+#export PATH=$PATH:/usr/local/go/bin
+#export GOPATH=$HOME/go
+#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+#
+#go get -u github.com/marpaia/graphite-golang
+#go get -u github.com/op/go-logging
+#go get -u github.com/go-sql-driver/mysql
+#git clone https://github.com/akashihi/graphite-mysql.git
+#cd graphite-mysql
+#go build .
+#
+#graphite-mysql -host 127.0.0.1 -port 3306 -user root -password secret -metrics-host 192.168.1.1 -metrics-port 2003 -metrics-prefix test -period 60
 
 ### need minimalist local_settings
 ### you may need to edit it for email and more stuff
