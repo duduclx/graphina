@@ -13,7 +13,9 @@ sed 's/myserverIP/$IP/' graphite.conf
 cp conf/amqp.conf /etc/collectd/collectd.conf.d
 cp conf/graphite.conf /etc/collectd/collectd.conf.d
 
-# don't forget to
 # push dialplan with cp ??
+# cp dialplan/xivo_stats.conf /etc/xivo/asterisk/xivo_stats.conf
+
+# don't forget to
 echo "do not forget to create the dialplan !"
 echo "with the correct exten value, yeah"
