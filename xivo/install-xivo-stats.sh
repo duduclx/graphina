@@ -10,8 +10,8 @@ read -p IP
 sed 's/myserverIP/$IP/' graphite.conf
 
 # copying files
-cp amqp.conf /etc/collectd/collectd.conf.d
-cp graphite.conf /etc/collectd/collectd.conf.d
+cp conf/amqp.conf /etc/collectd/collectd.conf.d
+cp conf/graphite.conf /etc/collectd/collectd.conf.d
 
 # don't forget to
 # push dialplan with cp ??
