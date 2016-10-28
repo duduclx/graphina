@@ -51,10 +51,8 @@ cp $GRAPHITE_CONF/graphite.wsgi.example $GRAPHITE_CONF/graphite.wsgi
 cp $GRAPHITE_CONF/carbon.conf.example $GRAPHITE_CONF/carbon.conf
 cp $GRAPHITE_CONF/dashboard.conf.example $GRAPHITE_CONF/dashboard.conf
 cp $GRAPHITE_CONF/graphTemplates.conf.example $GRAPHITE_CONF/graphTemplates.conf
-cp $GRAPHITE_CONF/storage-schemas.conf.example $GRAPHITE_CONF/storage-schemas.conf
 
-echo "[stats]\npattern = ^stats.*\nretentions = 10:2160,60:10080,600:262974" >> $GRAPHITE_CONF/storage-schemas.conf
-
+cp conf/storage-schemas.conf $GRAPHITE_CONF/storage-schemas.conf
 cp conf/storage-aggregation.conf $GRAPHITE_CONF/storage-aggregation.conf
 
 ### moving examples
