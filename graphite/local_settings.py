@@ -16,7 +16,7 @@ SECRET_KEY = 'mysecretkey'
 # In Django 1.5+ set this to the list of hosts your graphite instances is
 # accessible as. See:
 # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-ALLOWED_HOSTS
-#ALLOWED_HOSTS = [ '*' ]
+ALLOWED_HOSTS = [ '*' ]
 
 # Set your local timezone (Django's default is America/Chicago)
 # If your graphs appear to be offset by a couple hours then this probably
@@ -27,7 +27,7 @@ TIME_ZONE = 'France/Paris'
 DATE_FORMAT = '%d/%m'
 
 # Override this to provide documentation specific to your Graphite deployment
-#DOCUMENTATION_URL = "http://graphite.readthedocs.io/"
+DOCUMENTATION_URL = "http://graphite.readthedocs.io/"
 
 # Logging
 #LOG_ROTATION = True
@@ -58,21 +58,21 @@ MEMCACHE_HOSTS = ['127.0.0.1:11211']
 # to the cache duration for the results. This allows for larger queries to be
 # cached for longer periods of times. All times are in seconds. If the policy is
 # empty or undefined, all results will be cached for DEFAULT_CACHE_DURATION.
-#DEFAULT_CACHE_DURATION = 60 # Cache images and data for 1 minute
-#DEFAULT_CACHE_POLICY = [(0, 60), # default is 60 seconds
+DEFAULT_CACHE_DURATION = 60 # Cache images and data for 1 minute
+DEFAULT_CACHE_POLICY = [(0, 60), # default is 60 seconds
 #                        (7200, 120), # >= 2 hour queries are cached 2 minutes
 #                        (21600, 180)] # >= 6 hour queries are cached 3 minutes
-#MEMCACHE_KEY_PREFIX = 'graphite'
+MEMCACHE_KEY_PREFIX = 'graphite'
 
 # Set URL_PREFIX when deploying graphite-web to a non-root location
 URL_PREFIX = '/graphite'
 
 # Graphite uses Django Tagging to support tags in Events. By default each
 # tag is limited to 50 characters in length.
-#MAX_TAG_LENGTH = 50
+MAX_TAG_LENGTH = 50
 
 # Interval for the Auto-Refresh feature in the Composer, measured in seconds.
-#AUTO_REFRESH_INTERVAL = 60
+AUTO_REFRESH_INTERVAL = 60
 
 #####################################
 # Filesystem Paths #
@@ -102,7 +102,7 @@ GRAPHTEMPLATES_CONF = '/opt/graphite/conf/graphTemplates.conf'
 #
 # NOTE: If any directory is unreadable in STANDARD_DIRS it will break metric browsing
 #
-CERES_DIR = '/opt/graphite/storage/ceres'
+#CERES_DIR = '/opt/graphite/storage/ceres'
 WHISPER_DIR = '/opt/graphite/storage/whisper'
 RRD_DIR = '/opt/graphite/storage/rrd'
 #
@@ -212,9 +212,10 @@ DASHBOARD_REQUIRE_PERMISSIONS = True
 # The default is 'django.db.backends.sqlite3' with file 'graphite.db'
 # located in STORAGE_DIR
 #
+#'NAME': '/opt/graphite/storage/graphite.db',
 DATABASES = {
     'default': {
-        'NAME': '/opt/graphite/storage/graphite.db',
+        'NAME': 'graphite',
         'ENGINE': 'django.db.backends.mysql',
         'USER': 'graphite',
         'PASSWORD': 'graphite_password',
