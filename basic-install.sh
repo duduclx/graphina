@@ -54,6 +54,16 @@ cp storage-aggregation.conf $GRAPHITE_CONF/storage-aggregation.conf
 mkdir $GRAPHITE_CONF/examples
 mv $GRAPHITE_CONF/*.example $GRAPHITE_CONF/examples/
 
+### creating database
+apt-get install mysql-server
+# ask for user and password for editing local-settings.py
+mysql -u root -p
+#enter password then
+create database graphite;
+create user 'graphite'@'localhost' identified by 'graphite_password';
+grant all on testdb.* to 'graphite';
+exit
+
 ### need minimalist local_settings
 ### you may need to edit it for email and more stuff
 cp local_settings.py $GRAPHITE_SETTING/local_settings.py
@@ -83,6 +93,3 @@ a2enmod rewrite
 /bin/systemctl start grafana-server
 service apache2 reload
 service apache2 restart
-
-
-
