@@ -1,3 +1,7 @@
+this part is provided by [sboily](https://github.com/sboily/xivo-stats)
+
+thanks !!
+
 # XiVO statistics
 
 On your XiVO or adapt the config for your installation.
