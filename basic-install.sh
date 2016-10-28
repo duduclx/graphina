@@ -63,6 +63,7 @@ create database graphite;
 create user 'graphite'@'localhost' identified by 'graphite_password';
 grant all on testdb.* to 'graphite';
 exit
+#default port 3306
 
 ### need minimalist local_settings
 ### you may need to edit it for email and more stuff
