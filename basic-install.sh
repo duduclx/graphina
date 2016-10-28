@@ -111,6 +111,10 @@ dpkg -i grafana_3.1.1-1470047149_amd64.deb
 service grafana-server start
 update-rc.d grafana-server defaults
 
+### installing influxdb
+wget https://dl.influxdata.com/influxdb/releases/influxdb_1.0.2_amd64.deb
+dpkg -i influxdb_1.0.2_amd64.deb
+
 ### running services
 a2dissite 000-default
 a2ensite graphite
