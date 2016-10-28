@@ -93,6 +93,10 @@ chown -R www-data:www-data /opt/graphite/{storage,webapp}
 PYTHONPATH=$GRAPHITE_ROOT/webapp django-admin.py migrate --settings=graphite.settings --run-syncdb
 #/usr/lib/python2.7/site-packages/graphite/manage.py syncdb
 
+### run graphite
+#cd ${GRAPHITE_HOME}/webapp
+#./manage.py runserver
+
 ### installing grafana
 wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.1.1-1470047149_amd64.deb
 apt-get install -y adduser libfontconfig
