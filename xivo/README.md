@@ -36,12 +36,6 @@ LoadPlugin write_graphite
     </Node>
 </Plugin>
 ```
-And launch docker graphite/graphana instance.
-
-docker run -d -p 80:80 -p 2003:2003 -p 8125:8125/udp -p 8126:8126 --name grafana-dashboard choopooly/grafana-graphite
-
-Go to your docker_host port 80.
-
 Add an asterisk dialplan like:
 ```
 exten = 1234,1,NoOp(callcontrol)
