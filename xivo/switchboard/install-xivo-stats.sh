@@ -1,5 +1,14 @@
 #!/bin/bash
 
+### check existing installation
+if [[ -d /etc/collectd/collectd.conf.d ]]; then
+# do nothing
+echo " "
+ else 
+# installing collectd
+apt-get install collectd
+fi
+
 # getting right graphite IP
 echo "Please type your graphite server IP"
 echo "something like 192.168.2.99"
@@ -10,8 +19,8 @@ read -p "type here" IP
 sed 's/myserverIP/$IP/' conf/graphite.conf
 
 # copying files
-cp conf/amqp.conf /etc/collectd/collectd.conf.d
-cp conf/graphite.conf /etc/collectd/collectd.conf.d
+cp conf/amqp.conf /etc/collectd/collectd.conf.d/amqp.conf
+cp conf/graphite.conf /etc/collectd/collectd.conf.d/graphite.conf
 cp conf/001-custom.yml /etc/xivo-ctid-ng/conf.d/001-custom.yml
 #cp conf/network.conf /etc/collectd/collectd.conf.d/network.conf
 
@@ -31,7 +40,3 @@ sed -e "s/1234/$EXTEN/g" switchboard_stats.conf
 
 #run logstash docker
 docker run -p 25826:25826/udp -it --rm -v $(pwd):/config-dir logstash logstash -f /config-dir/logstash.conf
-
-# don't forget to
-#echo "do not forget to create the dialplan !"
-#echo "with the correct exten value, yeah"
