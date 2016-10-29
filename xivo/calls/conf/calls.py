@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 ASTERISK_HOST = "xivoIP"
 ASTERISK_PORT = 5038
-ASTERISK_USER = "user"
-ASTERISK_SECRET = "secret"
+ASTERISK_USER = "xivouser"
+ASTERISK_SECRET = "xivosecret"
 
 CARBON_HOST = "127.0.0.1"
 CARBON_PORT = 2003
