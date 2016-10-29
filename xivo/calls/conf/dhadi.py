@@ -1,9 +1,9 @@
 #! /usr/bin/env python
-ASTERISK_HOST = "hostname"
+ASTERISK_HOST = "xivoIP"
 ASTERISK_PORT = 5038
 ASTERISK_USER = "user"
 ASTERISK_SECRET = "secret"
 
-CARBON_HOST = "hostname"
+CARBON_HOST = "localhost"
 CARBON_PORT = 2003
-DAHDI_METRIC = "zweig.host.asterisk.dahdi.max"
+DAHDI_METRIC = "xivo.host.asterisk.dahdi.max"
