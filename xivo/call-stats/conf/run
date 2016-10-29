@@ -1,0 +1,1 @@
+docker run -p 25826:25826/udp -it --rm -v $(pwd):/config-dir logstash logstash -f /config-dir/logstash.conf
