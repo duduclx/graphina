@@ -11,7 +11,8 @@ Read the switchboard [readme.md](https://github.com/duduclx/graphina/blob/master
 ### calls
  We connect to xivo and collect asterisk **call metrics** in **Carbon**.
  - "calls" are internal calls
- - "dahdi" are channels (calls passing by the dahdi module) 
+ - "dahdi" are channels (calls passing by the dahdi module)
+ 
  Read the calls [readme.md](https://github.com/duduclx/graphina/blob/master/xivo/calls/README.md) for more informations.
  
 ### server
@@ -20,14 +21,14 @@ Read the switchboard [readme.md](https://github.com/duduclx/graphina/blob/master
  
  # task list:
  1. swithboard
- - [*] configure collectd
- - [*] edit conf within the script
+ - [x] configure collectd
+ - [x] edit conf within the script
  - [ ] test dialplan on a IVR
  - [ ] create custom dashboard
  - [ ] validate the tool
  2. calls
- - [*] use carbon on the supervisor server
- - [*] edit conf within the script
+ - [x] use carbon on the supervisor server
+ - [x] edit conf within the script
  - [ ] create custom dashboard
  3. server
  - [ ] retrieve xivo's rra
