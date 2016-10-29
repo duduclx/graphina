@@ -1,11 +1,11 @@
 #! /usr/bin/env python
-ASTERISK_HOST = "hostname"
+ASTERISK_HOST = "xivoIP"
 ASTERISK_PORT = 5038
 ASTERISK_USER = "user"
 ASTERISK_SECRET = "secret"
 
-CARBON_HOST = "hostname"
+CARBON_HOST = "127.0.0.1"
 CARBON_PORT = 2003
-CALLS_PROCESSED_METRIC = "zweig.host.asterisk.calls.processed"
-CALLS_ACTIVE_METRIC = "zweig.host.asterisk.calls.max"
-CHANNELS_ACTIVE_METRIC = "zweig.host.asterisk.channels.max"
+CALLS_PROCESSED_METRIC = "xivo.host.asterisk.calls.processed"
+CALLS_ACTIVE_METRIC = "xivo.host.asterisk.calls.max"
+CHANNELS_ACTIVE_METRIC = "xivo.host.asterisk.channels.max"
