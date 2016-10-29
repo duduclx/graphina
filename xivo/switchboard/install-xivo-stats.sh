@@ -7,11 +7,12 @@ echo "======================="
 read -p "type here" IP
 
 # editing graphite.conf
-sed 's/myserverIP/$IP/' graphite.conf
+sed 's/myserverIP/$IP/' conf/graphite.conf
 
 # copying files
 cp conf/amqp.conf /etc/collectd/collectd.conf.d
 cp conf/graphite.conf /etc/collectd/collectd.conf.d
+cp conf/001-custom.yml /etc/xivo-ctid-ng/conf.d/001-custom.yml
 
 # push dialplan with cp ??
 # cp dialplan/xivo_stats.conf /etc/xivo/asterisk/xivo_stats.conf
