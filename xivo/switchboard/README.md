@@ -1,10 +1,4 @@
-this part is provided by [sboily xivo stats](https://github.com/sboily/xivo-stats)
-and [sboily conf](https://github.com/sboily/config)
-and this [topic](http://projects.xivo.io/issues/6071)
-
-thanks !!
-
-** this script is to use on the xivo server !! **
+*** this script is to use on the xivo server !! ***
 
 # XiVO switchoard statistics
 
@@ -25,4 +19,7 @@ run
 
 It uses collectd to retrieve data, and send it to carbon service on the graphite server
 
-more information on [xivo feature \#6071](http://projects.xivo.io/issues/6071)
+more informations and ressources:
+- [xivo feature \#6071](http://projects.xivo.io/issues/6071)
+- [sboily xivo stats](https://github.com/sboily/xivo-stats)
+- [sboily conf](https://github.com/sboily/config)
