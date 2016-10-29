@@ -4,6 +4,8 @@ and [sboily conf](https://github.com/sboily/config)
 
 and this [topic](http://projects.xivo.io/issues/6071)
 
+test sboily/xivo-stats
+
 thanks !!
 
 # XiVO statistics
