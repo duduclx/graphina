@@ -4,7 +4,7 @@ import telnetlib
 import socket
 import time
 import re
-from config import *
+from config import conf/*
 
 # initialise variables and regular expression patterns.
 activeCalls = None
