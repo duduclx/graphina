@@ -21,7 +21,7 @@ In order to have Switchboard statistics, we need to generate events when calls a
 The chosen implementation is to send events to collectd via RabbitMQ:
 - It uses collectd to retrieve data, 
 - store the events in the logs of the logstash container.
-- and send it to carbon service on the graphite server.
+- and send it into the graphite server.
 
 more informations and ressources:
 - [xivo feature \#6071](http://projects.xivo.io/issues/6071)
