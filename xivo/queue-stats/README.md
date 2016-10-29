@@ -1,4 +1,8 @@
-this part is provided by [sboily](https://github.com/sboily/xivo-stats)
+this part is provided by [sboily xivo stats](https://github.com/sboily/xivo-stats)
+
+and [sboily conf](https://github.com/sboily/config)
+
+and this [topic](http://projects.xivo.io/issues/6071)
 
 thanks !!
 
