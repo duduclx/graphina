@@ -1,4 +1,4 @@
-*** !! this script is to use on the xivo server !! ***
+### !! this script is to use on the xivo server !! ###
 
 # XiVO switchoard statistics
 
