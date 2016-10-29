@@ -4,8 +4,6 @@ and [sboily conf](https://github.com/sboily/config)
 
 and this [topic](http://projects.xivo.io/issues/6071)
 
-and also by [zweig](https://github.com/niklasR/zweig)
-
 thanks !!
 
 # XiVO statistics
