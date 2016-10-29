@@ -16,6 +16,9 @@ cp conf/graphite.conf /etc/collectd/collectd.conf.d
 # push dialplan with cp ??
 # cp dialplan/xivo_stats.conf /etc/xivo/asterisk/xivo_stats.conf
 
+#run logstash docker
+docker run -p 25826:25826/udp -it --rm -v $(pwd):/config-dir logstash logstash -f /config-dir/logstash.conf
+
 # don't forget to
 echo "do not forget to create the dialplan !"
 echo "with the correct exten value, yeah"
