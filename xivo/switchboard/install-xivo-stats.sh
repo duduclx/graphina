@@ -16,7 +16,7 @@ echo "======================="
 read -p "type here" IP
 
 # editing graphite.conf
-sed 's/myserverIP/$IP/' conf/graphite.conf
+sed -e "s/myserverIP/$IP/g" conf/graphite.conf
 
 # copying files
 cp conf/amqp.conf /etc/collectd/collectd.conf.d/amqp.conf
