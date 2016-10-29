@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 ASTERISK_HOST = "hostname"
 ASTERISK_PORT = 5038
 ASTERISK_USER = "user"
