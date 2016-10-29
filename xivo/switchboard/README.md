@@ -1,53 +1,28 @@
 this part is provided by [sboily xivo stats](https://github.com/sboily/xivo-stats)
-
 and [sboily conf](https://github.com/sboily/config)
-
 and this [topic](http://projects.xivo.io/issues/6071)
 
 thanks !!
 
-# XiVO statistics
+** this script is to use on the xivo server !! **
 
-On your XiVO or adapt the config for your installation.
-```
-apt-get install collectd
-```
-In directory /etc/collectd/collectd.conf.d
+# XiVO switchoard statistics
 
-Add a file : amqp.conf
-```
-LoadPlugin amqp
-<Plugin "amqp">
-  <Subscribe "xivo">
-    Host "127.0.0.1"
-    Port "5672"
-    VHost "/"
-    User "guest"
-    Password "guest"
-    Exchange "collectd"
-    ExchangeType "topic"
-    RoutingKey "collectd.#"
-  </Subscribe>
-</Plugin>
-```
-Add a file : graphite.conf
-```
-LoadPlugin write_graphite
-<Plugin "write_graphite">
-    <Node "graphite">
-        Host "192.168.32.41"
-        Port "2003"
-        EscapeCharacter "_"
-        SeparateInstances true
-        StoreRates false
-        AlwaysAppendDS false
-    </Node>
-</Plugin>
-```
-Add an asterisk dialplan like:
-```
-exten = 1234,1,NoOp(callcontrol)
-same  =      n,Set(XIVO_STASIS_ARG=sw1)
-same  =      n,Stasis(callcontrol,${XIVO_STASIS_ARG})
-same  =      n,Hangup()
-```
+To run this, you need to have a Xivo version 16.02 or above.
+
+Also, you need to know:
+- graphite server IP
+- the Exten of the queue to monitor
+
+# how to use
+
+run
+````
+./install_xivo_switchboard_stats.sh
+````
+
+# how it works
+
+It uses collectd to retrieve data, and send it to carbon service on the graphite server
+
+more information on [xivo feature \#6071](http://projects.xivo.io/issues/6071)
