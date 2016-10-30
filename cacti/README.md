@@ -10,6 +10,13 @@ We want [columned graphite data](http://roobert.github.io/2015/10/10/Columned-Gr
 -- phase2
 -- phase3
 
+## cacti ##
+ dedicated [cacti readme](https://github.com/duduclx/graphina/blob/master/cacti/README.md)
+ ### influxdb ###
+ - [ ] configure influxdb
+ - [ ] import template
+ - [ ] custom dashbord
+ 
 ressources:
 [influxdb github](https://github.com/influxdata/influxdb/blob/master/services/graphite/README.md)
 
