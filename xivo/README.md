@@ -19,17 +19,17 @@ Read the switchboard [readme.md](https://github.com/duduclx/graphina/blob/master
  We retrieve the data generating by the default "monitoring" service from xivo
  and intend to retreive it under grafana and so have **server stats**
  
- # task list:
- 1. swithboard
+## task list:
+ ### swithboard ###
  - [x] configure collectd
  - [x] edit conf within the script
  - [ ] test dialplan on a IVR
  - [ ] create custom dashboard
  - [ ] validate the tool
- 2. calls
+ ### calls ###
  - [x] use carbon on the supervisor server
  - [x] edit conf within the script
  - [ ] create custom dashboard
- 3. server
+ ### server ###
  - [ ] retrieve xivo's rra
  - [ ] create custom dashboard
