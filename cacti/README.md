@@ -1,3 +1,18 @@
+# Datacenter supervision
+
+We have a running cacti, graphing pdu, ups and temp.
+
+We will send it to a influxdb on the supervision server, using cereustransporter cacti's pulgin.
+
+We want [columned graphite data](http://roobert.github.io/2015/10/10/Columned-Graphite-Data-in-InfluxDB/) to have something like:
+- pdu or ups:
+-- phase1
+-- phase2
+-- phase3
+
+ressources:
+[influxdb github](https://github.com/influxdata/influxdb/blob/master/services/graphite/README.md)
+
 ## this is a part to do on your cacti server !!
 
 add the plugins [cereustransporter](https://www.urban-software.com/products/nmid-plugins/cereustransporter/)
