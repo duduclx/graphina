@@ -4,7 +4,7 @@ to use with debian 64bits (amd64) and tested on debian 8 jessie amd64
 ### !! This project is not ready to use at this time !! #
 
 # task list:
-1. supervisor server:
+## supervisor server:
 - [ ] have a working graphite
 - [ ] have a working carbon
 - [ ] have custom config for carbon
@@ -16,49 +16,50 @@ to use with debian 64bits (amd64) and tested on debian 8 jessie amd64
 - [x] add plugins to grafana
 - [ ] add custom dashbord template for grafana
 - [ ] add examples/script to feed data
+## xivo ##
+dedicated [xivo readme](https://github.com/duduclx/graphina/blob/master/xivo/README.md)
+ - [x] switchboard
+ - [x] calls
+ - [ ] server
+ ## cacti ##
+ dedicated [cacti readme](https://github.com/duduclx/graphina/blob/master/cacti/README.md)
+ - [ ] supervisor server
 
 # details:
 1. lastest graphite with:
  * carbon
  * whisper
- * collectd
  * influxdb
  * mysql
 2. grafana 3.1.1 with:
  * custom dashboard for datacenter (pdu, ups, pue and temp)
  * custom dashbord for xivo (queue supervision, total calls, server stats)
- 
-## xivo ##
-dedicated [xivo readme](https://github.com/duduclx/graphina/blob/master/xivo/README.md)
- ### swithboard ###
- - [x] configure collectd
- - [x] edit conf within the script
- - [ ] test dialplan on a IVR
- - [ ] create custom dashboard
- - [ ] validate the tool
- ### calls ###
- - [x] use carbon on the supervisor server
- - [x] edit conf within the script
- - [ ] create custom dashboard
- ### server ###
- - [ ] retrieve xivo's rra
- - [ ] create custom dashboard
- 
- ## cacti ##
- dedicated [cacti readme](https://github.com/duduclx/graphina/blob/master/cacti/README.md)
- ### influxdb ###
- - [ ] configure influxdb
- - [ ] import template
- - [ ] custom dashbord
+3. xivo 16.02+ with:
+ * collectd
+ * stashlog docker
+ * postgresql to collectd
  
 # How to use:
-
-to proceed to installation, type in your terminal:
+## supervisor server
+to install the tools, type in your terminal:
 ```
 git clone https://github.com/duduclx/graphina.git
 cd graphina
 chmod a+x basic-install.sh
 ./basic-install.sh
+```
+## xivo
+to install the calls metric supervision, type in your terminal:
+```
+cd graphina/xivo/calls
+chmod +x install_cacmec.sh
+./install_cacmec.sh
+```
+to install the switchboard, connect to your xivo server first, then type in your terminal:
+```
+git clone https://github.com/duduclx/graphina.git
+cd graphina/xivo/switchboard
+install_xivo_switchboard_stats.sh
 ```
 
 # to remove the installer, run:
