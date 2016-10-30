@@ -107,6 +107,12 @@ wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.1.1-1470047149_amd64.d
 apt-get install -y adduser libfontconfig
 dpkg -i grafana_3.1.1-1470047149_amd64.deb
 
+### installing grafana plugins
+# pie chart
+grafana-cli plugins install grafana-piechart-panel
+# diagram
+grafana-cli plugins install jdbranham-diagram-panel
+
 ### start grafana and make it running at boot
 service grafana-server start
 update-rc.d grafana-server defaults
