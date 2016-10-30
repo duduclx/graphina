@@ -39,4 +39,4 @@ sed -e "s/1234/$EXTEN/g" switchboard_stats.conf
 # cp dialplan/switchboard_stats.conf /etc/xivo/asterisk/switchboard_stats.conf
 
 #run logstash docker
-docker run -p 25826:25826/udp -it --rm -v $(pwd):/config-dir logstash logstash -f /config-dir/logstash.conf
+#docker run -p 25826:25826/udp -it --rm -v $(pwd):/config-dir logstash logstash -f /config-dir/logstash.conf
