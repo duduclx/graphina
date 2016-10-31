@@ -106,6 +106,8 @@ PYTHONPATH=$GRAPHITE_ROOT/webapp django-admin.py migrate --settings=graphite.set
 #sudo ./carbon-cache.py start
 #sudo su -c "./run-graphite-devel-server.py \
 #     /opt/graphite &> /var/log/graphite.log &"
+#or
+#carbon-daemon.py [options] <instance> <start|stop|status>
 
 ### installing grafana
 wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.1.1-1470047149_amd64.deb
