@@ -1,7 +1,7 @@
 # graphina
 to use with debian 64bits (amd64) and tested on debian 8 jessie amd64
 
-### !! This project is not ready to use at this time !! #
+### !! This project is not ready to use at this time !! ###
 
 # task list:
 ## supervisor server:
