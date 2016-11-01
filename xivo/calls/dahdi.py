@@ -5,7 +5,7 @@ import telnetlib
 import re
 import socket
 import time
-from conf/dahdi import *
+from ../../conf/dahdi import *
 
 # initialise variables and regular expression patterns.
 activeDAHDIChannels = 0
