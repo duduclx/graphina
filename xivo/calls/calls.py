@@ -4,7 +4,7 @@ import telnetlib
 import socket
 import time
 import re
-from conf/calls import *
+from ../../conf/calls import *
 
 # initialise variables and regular expression patterns.
 activeCalls = None
@@ -78,8 +78,8 @@ while True:
 
 
 #logoff. won't ever really get here as loop above infinite...
-# print "Done reading"
-# print "Logging of.."
+print "Done reading"
+print "Logging of.."
 tn.write("Action: Logoff" + "\n\n")
 tn.close()
 exit()

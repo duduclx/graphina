@@ -22,18 +22,6 @@ apt-get install uwsgi uwsgi-plugin-python
 
 pip install pytz
 pip install 'django-tagging<0.4'
-### installing using github source
-#git clone https://github.com/graphite-project/graphite-web.git
-#git clone https://github.com/graphite-project/carbon.git
-#git clone https://github.com/graphite-project/whisper.git
-
-#cd graphite-web
-#python setup.py install
-#cd ../carbon
-#python setup.py install
-#cd ../whisper
-#python setup.py install
-#cd ..
 
 ### installing from pip
 pip install whisper
@@ -61,15 +49,21 @@ mkdir $GRAPHITE_CONF/examples
 mv $GRAPHITE_CONF/*.example $GRAPHITE_CONF/examples/
 
 ### creating database
+# installing mysql
 apt-get install mysql-server
 # ask for user and password for editing local-settings.py
-mysql -u root -p
-#enter password then
+echo "Please type your mysql password for root user"
+echo "something like Mys3cr3t"
+echo "======================="
+read -p "type here" MYSQL
+
+# editing graphite.conf
+sed -e "s/myserverIP/$IP/g" ../conf/graphite.conf
+mysql -u root -p$MYSQL << EOF
 create database graphite;
 create user 'graphite'@'localhost' identified by 'graphite_password';
 grant all on graphite.* to 'graphite';
-exit
-#default port 3306
+EOF
 
 ### installing phpmyadmin
 apt-get install mcrypt
@@ -119,14 +113,18 @@ dpkg -i grafana_3.1.1-1470047149_amd64.deb
 grafana-cli plugins install grafana-piechart-panel
 # diagram
 grafana-cli plugins install jdbranham-diagram-panel
-
-### start grafana and make it running at boot
-service grafana-server start
-update-rc.d grafana-server defaults
+# histogram
+grafana-cli plugins install mtanda-histogram-panel
 
 ### installing influxdb
 wget https://dl.influxdata.com/influxdb/releases/influxdb_1.0.2_amd64.deb
 dpkg -i influxdb_1.0.2_amd64.deb
+### see https://docs.influxdata.com/influxdb/v0.9/introduction/installation/ for config file
+
+### installing elasticsearch
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.deb
+dpkg -i elasticsearch-5.0.0.deb
+### see https://www.elastic.co/guide/en/elasticsearch/reference/master/settings.html for config file
 
 ### running services
 a2dissite 000-default
@@ -139,3 +137,16 @@ a2enmod rewrite
 /bin/systemctl start grafana-server
 service apache2 reload
 service apache2 restart
+
+### start grafana and make it running at boot
+service grafana-server start
+update-rc.d grafana-server defaults
+
+### start influxdb and make it running at boot
+service influxdb start
+update-rc.d influxdb defaults
+
+### start elasticsearch and make it running at boot
+service elasticsearch start
+update-rc.d elasticsearch defaults 95 10
+
