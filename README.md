@@ -69,18 +69,20 @@ and intend to retreive it under grafana and so have **server stats**
 
 
 # How to use:
-## supervisor server
-to install the tools, type in your terminal:
+to dowload the tools
 ```
 git clone https://github.com/duduclx/saphir.git
 cd saphir/install
+```
+## supervisor server
+to install the tools, type in your terminal:
+```
 chmod a+x install_supervisor.sh
 ./install_supervisor.sh
 ```
 ## xivo
 to install the calls metric supervision, type in your terminal:
 ```
-cd saphir/install
 chmod +x install_calls.sh
 ./install_calls.sh
 ```
@@ -88,7 +90,7 @@ chmod +x install_calls.sh
 # list of services:
 | service                 | :port                 | user          | password         | config directory    |
 | ----------------------- | --------------------- | ------------- | ---------------- | ------------------- |
-| graphite                | :8080                 |               |                  | /opt/graphite       |
+| graphite                | :8000                 |               |                  | /opt/graphite       |
 | Carbon                  | :2003 :2004 :7002     |               |                  | /opt/graphite/conf  |
 | whisper                 | none /carbon:2003     |               |                  | /opt/graphite/conf  |
 | mysql                   | :3306                 | root          |  <your_password> |                     |
@@ -99,8 +101,5 @@ chmod +x install_calls.sh
 | elasticsearch interface | :9200                 | elasticsearch | elasticsearch    | /etc/elasticsearch/ |
 | elasticsearch transport | :9300                 |               |                  | /etc/elasticsearch/ |
 | logstash                | :5044                 |               |                  | /opt/logstash       |
-
-
-
-
+| collectd                | :xxxx                 |               |                  | /etc/collectd       |
 
