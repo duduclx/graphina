@@ -92,8 +92,9 @@ clear
 echo "Select apache2 with the spacebar."
 echo "When asked to configure database for phpmyadmin with dbconfig-common,"
 echo "select yes."
-pause 10
-apt-get install phpmyadmin
+
+sleep 10
+apt-get -y install phpmyadmin
 
 ### set pythonpath for django to run
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages
@@ -154,12 +155,11 @@ update-rc.d grafana-server defaults
 
 ### start influxdb and make it running at boot
 service influxdb start
-update-rc.d influxdb defaults
 
 ### start elasticsearch and make it running at boot
 service elasticsearch start
 update-rc.d elasticsearch defaults
-sudo /etc/init.d/elasticsearch start
+/etc/init.d/elasticsearch start
 
 ### run graphite
 cd ${GRAPHITE_HOME}/bin
