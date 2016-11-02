@@ -33,7 +33,7 @@ pip install graphite-web
 #PYTHONPATH=$GRAPHITE_HOME/webapp django-admin.py migrate --settings=graphite.settings --run-syncdb
 
 # cleaning terminal
-clear
+#clear
 
 ### configuring graphite
 cp $GRAPHITE_CONF/graphite.wsgi.example $GRAPHITE_CONF/graphite.wsgi
@@ -66,7 +66,8 @@ cp apache2/graphite.conf /etc/apache2/sites-available/graphite.conf
 # installing mysql
 apt-get -y install mysql-server
 
-clear
+# cleaning terminal
+#clear
 
 # ask for user and password for editing local-settings.py
 echo "Please type your mysql password for root user"
@@ -86,7 +87,7 @@ apt-get -y install mcrypt
 service apache2 restart
 
 # cleaning terminal
-clear
+#clear
 
 ### instructions for phpmyadmin
 echo "Select apache2 with the spacebar."
@@ -126,11 +127,11 @@ wget https://dl.influxdata.com/influxdb/releases/influxdb_1.0.2_amd64.deb
 dpkg -i influxdb_1.0.2_amd64.deb
 ### see https://docs.influxdata.com/influxdb/v0.9/introduction/installation/ for config file
 # create influxdb database
-influx << EOF
-CREATE DATABASE cacti
-USE cacti
-DROP DATABASE _internal
-EOF
+#influx << EOF
+#CREATE DATABASE cacti
+#USE cacti
+#DROP DATABASE _internal
+#EOF
 
 ### installing elasticsearch
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.deb
@@ -168,3 +169,11 @@ cd ${GRAPHITE_HOME}/bin
 cd ${GRAPHITE_HOME}/webapp/graphite
 chmod +x manage.py
 ./manage.py runserver
+
+# end of script
+echo " "
+echo " "
+echo "_______________"
+echo "end of script"
+echo "cheers !"
+echo "_______________"
