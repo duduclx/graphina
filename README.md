@@ -3,25 +3,24 @@ to use with debian 64bits (amd64) and tested on debian 8 jessie amd64
 
 ### !! This project is not ready to use at this time !! ###
 
-this project is about have a supervisor server for:
-- retrieve metrics from a cacti server to the influxdb
-in my case, the cacti is used to graph pdu, ups, and temp from a datacenter room
-- retreive metrics from a xivo server to differents database
-retrieve calls and dahdi metrics for global calls stats to the carbon service
-server metrics for global usage of the server 
-and the postgresql
+this project is about have a supervisor server with:
+- graphite using mysql database
+- grafana dashboard
+see details for more informations.
 
 # task list:
 ## supervisor server:
 - [x] have a working graphite
 - [x] have a working carbon
 - [x] have custom config for carbon
-- [x] have a working collectd
+- [ ] have a working collectd
 - [ ] have custom config for collectd
 - [x] have a working influxdb
 - [ ] have custom config file for influxdb
+- [ ] have a working elasticsearch
+- [ ] have custom config file for elasticsearch
 - [x] have a working phpmyadmin
-- [ ] have a working mysql
+- [x] have a working mysql
 - [x] have a working grafana
 - [x] add plugins to grafana
 - [ ] add custom dashbord template for grafana
@@ -43,21 +42,22 @@ and the postgresql
  * monitor the xivo's server from his postgresql to the collectd in the supervisor server.
 
 # How to use:
-to dowload the tools
+open terminal and type:
 ```
 git clone https://github.com/duduclx/graphina.git
-```
-## supervisor server
-to install the tools, type in your terminal:
-```
 chmod a+x install_supervisor.sh
 ./install_supervisor.sh
 ```
 
+# What's next:
+
+Well, let's read the [start help](https://github.com/duduclx/graphina/blob/master/whatsnext.txt)
+
 # list of services:
+
 | service                 | :port                 | user          | password         | config directory    |
 | ----------------------- | --------------------- | ------------- | ---------------- | ------------------- |
-| graphite                | :80                   |               |                  | /opt/graphite       |
+| graphite                | :80                   | root          |  <your_password> | /opt/graphite       |
 | Carbon                  | :2003 :2004 :7002     |               |                  | /opt/graphite/conf  |
 | whisper                 | none /carbon:2003     |               |                  | /opt/graphite/conf  |
 | mysql                   | :3306                 | root          |  <your_password> |                     |
