@@ -46,7 +46,7 @@ mkdir $GRAPHITE_CONF/examples
 mv $GRAPHITE_CONF/*.example $GRAPHITE_CONF/examples/
 
 ### moving dir
-cd ../conf
+cd conf
 ### installing configured carbon conf files
 cp carbon/storage-schemas.conf $GRAPHITE_CONF/storage-schemas.conf
 cp carbon/storage-aggregation.conf $GRAPHITE_CONF/storage-aggregation.conf
@@ -155,7 +155,7 @@ update-rc.d influxdb defaults
 
 ### start elasticsearch and make it running at boot
 service elasticsearch start
-update-rc.d elasticsearch defaults 95 10
+update-rc.d elasticsearch defaults
 sudo /etc/init.d/elasticsearch start
 
 ### run graphite
