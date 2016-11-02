@@ -21,7 +21,7 @@ and the postgresql
 - [x] have a working influxdb
 - [ ] have custom config file for influxdb
 - [x] have a working phpmyadmin
-- [x] have a working mysql
+- [ ] have a working mysql
 - [x] have a working grafana
 - [x] add plugins to grafana
 - [ ] add custom dashbord template for grafana
