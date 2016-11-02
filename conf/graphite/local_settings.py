@@ -11,7 +11,7 @@
 # install. This key is used for salting of hashes used in auth tokens,
 # CRSF middleware, cookie storage, etc. This should be set identically among
 # instances if used behind a load balancer.
-SECRET_KEY = 'mysecretkey'
+SECRET_KEY = 'unsafe_default'
 
 # In Django 1.5+ set this to the list of hosts your graphite instances is
 # accessible as. See:
@@ -62,7 +62,7 @@ DEFAULT_CACHE_DURATION = 60 # Cache images and data for 1 minute
 DEFAULT_CACHE_POLICY = [(0, 60), # default is 60 seconds
 #                        (7200, 120), # >= 2 hour queries are cached 2 minutes
 #                        (21600, 180)] # >= 6 hour queries are cached 3 minutes
-MEMCACHE_KEY_PREFIX = 'graphite'
+#MEMCACHE_KEY_PREFIX = 'graphite'
 
 # Set URL_PREFIX when deploying graphite-web to a non-root location
 URL_PREFIX = '/graphite'
