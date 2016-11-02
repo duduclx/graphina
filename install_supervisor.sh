@@ -64,7 +64,10 @@ cp apache2/graphite.conf /etc/apache2/sites-available/graphite.conf
 
 ### creating database
 # installing mysql
-apt-get install mysql-server
+apt-get -y install mysql-server
+
+clear
+
 # ask for user and password for editing local-settings.py
 echo "Please type your mysql password for root user"
 echo "something like Mys3cr3t"
@@ -79,14 +82,14 @@ grant all on graphite.* to 'graphite';
 EOF
 
 ### installing phpmyadmin
-apt-get install mcrypt
+apt-get -y install mcrypt
 service apache2 restart
 
 # cleaning terminal
 clear
 
 ### instructions for phpmyadmin
-echo "Select apache2 with the spacebar.”
+echo "Select apache2 with the spacebar."
 echo "When asked to configure database for phpmyadmin with dbconfig-common,"
 echo "select yes."
 pause 10
