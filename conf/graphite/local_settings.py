@@ -11,29 +11,29 @@
 # install. This key is used for salting of hashes used in auth tokens,
 # CRSF middleware, cookie storage, etc. This should be set identically among
 # instances if used behind a load balancer.
-SECRET_KEY = 'unsafe_default'
+#SECRET_KEY = 'unsafe_default'
 
 # In Django 1.5+ set this to the list of hosts your graphite instances is
 # accessible as. See:
 # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-ALLOWED_HOSTS
-ALLOWED_HOSTS = [ '*' ]
+#ALLOWED_HOSTS = [ '*' ]
 
 # Set your local timezone (Django's default is America/Chicago)
 # If your graphs appear to be offset by a couple hours then this probably
 # needs to be explicitly set to your local timezone.
-TIME_ZONE = 'France/Paris'
+#TIME_ZONE = 'France/Paris'
 
 # Set the default short date format. See strftime(3) for supported sequences.
-DATE_FORMAT = '%d/%m'
+#DATE_FORMAT = '%d/%m'
 
 # Override this to provide documentation specific to your Graphite deployment
-DOCUMENTATION_URL = "http://graphite.readthedocs.io/"
+#DOCUMENTATION_URL = "http://graphite.readthedocs.io/"
 
 # Logging
 #LOG_ROTATION = True
 #LOG_ROTATION_COUNT = 1
-LOG_RENDERING_PERFORMANCE = True
-LOG_CACHE_PERFORMANCE = True
+#LOG_RENDERING_PERFORMANCE = True
+#LOG_CACHE_PERFORMANCE = True
 
 # Enable full debug page display on exceptions (Internal Server Error pages)
 #DEBUG = True
@@ -69,10 +69,10 @@ DEFAULT_CACHE_POLICY = [(0, 60), # default is 60 seconds
 
 # Graphite uses Django Tagging to support tags in Events. By default each
 # tag is limited to 50 characters in length.
-MAX_TAG_LENGTH = 50
+#MAX_TAG_LENGTH = 50
 
 # Interval for the Auto-Refresh feature in the Composer, measured in seconds.
-AUTO_REFRESH_INTERVAL = 60
+#AUTO_REFRESH_INTERVAL = 60
 
 #####################################
 # Filesystem Paths #
@@ -80,31 +80,31 @@ AUTO_REFRESH_INTERVAL = 60
 #
 # Change only GRAPHITE_ROOT if your install is merely shifted from /opt/graphite
 # to somewhere else
-GRAPHITE_ROOT = '/opt/graphite'
+#GRAPHITE_ROOT = '/opt/graphite'
 
 # Most installs done outside of a separate tree such as /opt/graphite will
 # need to change these settings. Note that the default settings for each
 # of these is relative to GRAPHITE_ROOT.
-CONF_DIR = '/opt/graphite/conf'
-STORAGE_DIR = '/opt/graphite/storage'
-STATIC_ROOT = '/opt/graphite/static'
-LOG_DIR = '/opt/graphite/storage/log/webapp'
-INDEX_FILE = '/opt/graphite/storage/index'     # Search index file
+#CONF_DIR = '/opt/graphite/conf'
+#STORAGE_DIR = '/opt/graphite/storage'
+#STATIC_ROOT = '/opt/graphite/static'
+#LOG_DIR = '/opt/graphite/storage/log/webapp'
+#INDEX_FILE = '/opt/graphite/storage/index'     # Search index file
 
 # To further or fully customize the paths, modify the following. Note that the
 # default settings for each of these are relative to CONF_DIR and STORAGE_DIR
 #
 ## Webapp config files
-DASHBOARD_CONF = '/opt/graphite/conf/dashboard.conf'
-GRAPHTEMPLATES_CONF = '/opt/graphite/conf/graphTemplates.conf'
+#DASHBOARD_CONF = '/opt/graphite/conf/dashboard.conf'
+#GRAPHTEMPLATES_CONF = '/opt/graphite/conf/graphTemplates.conf'
 
 ## Data directories
 #
 # NOTE: If any directory is unreadable in STANDARD_DIRS it will break metric browsing
 #
 #CERES_DIR = '/opt/graphite/storage/ceres'
-WHISPER_DIR = '/opt/graphite/storage/whisper'
-RRD_DIR = '/opt/graphite/storage/rrd'
+#WHISPER_DIR = '/opt/graphite/storage/whisper'
+#RRD_DIR = '/opt/graphite/storage/rrd'
 #
 # Data directories using the "Standard" metrics finder (i.e. not Ceres)
 #STANDARD_DIRS = [WHISPER_DIR, RRD_DIR] # Default: set from the above variables
@@ -176,17 +176,17 @@ RRD_DIR = '/opt/graphite/storage/rrd'
 # This section provides 3 different authorization models, of varying strictness.
 
 # If set to True, users must be logged in to save or delete dashboards. Defaults to False
-DASHBOARD_REQUIRE_AUTHENTICATION = True
+#DASHBOARD_REQUIRE_AUTHENTICATION = True
 
 # If set to the name of a user group, dashboards can be saved and deleted by any user in this
 # group.  Groups can be set in the Django Admin app, or in LDAP.  Defaults to None.
 # NOTE: Ignored if DASHBOARD_REQUIRE_AUTHENTICATION is not set
-DASHBOARD_REQUIRE_EDIT_GROUP = 'dashboard-editors-group'
+#DASHBOARD_REQUIRE_EDIT_GROUP = 'dashboard-editors-group'
 
 # If set to True, dashboards can be saved or deleted by any user having the appropriate
 # (change or delete) permission (as set in the Django Admin app).  Defaults to False
 # NOTE: Ignored if DASHBOARD_REQUIRE_AUTHENTICATION is not set
-DASHBOARD_REQUIRE_PERMISSIONS = True
+#DASHBOARD_REQUIRE_PERMISSIONS = True
 
 
 ##########################
@@ -320,8 +320,3 @@ DATABASES = {
 # Uncomment the following line for direct access to Django settings such as
 # MIDDLEWARE_CLASSES or APPS
 from graphite.app_settings import *
-
-    Contact GitHub API Training Shop Blog About 
-
-    © 2016 GitHub, Inc. Terms Privacy Security Status Help 
-
