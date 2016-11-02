@@ -57,7 +57,7 @@ chmod a+x install_supervisor.sh
 # list of services:
 | service                 | :port                 | user          | password         | config directory    |
 | ----------------------- | --------------------- | ------------- | ---------------- | ------------------- |
-| graphite                | :8000                 |               |                  | /opt/graphite       |
+| graphite                | :80                   |               |                  | /opt/graphite       |
 | Carbon                  | :2003 :2004 :7002     |               |                  | /opt/graphite/conf  |
 | whisper                 | none /carbon:2003     |               |                  | /opt/graphite/conf  |
 | mysql                   | :3306                 | root          |  <your_password> |                     |
