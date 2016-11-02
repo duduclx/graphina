@@ -5,7 +5,7 @@ GRAPHITE_HOME='/opt/graphite'
 GRAPHITE_CONF="${GRAPHITE_HOME}/conf"
 GRAPHITE_STORAGE="${GRAPHITE_HOME}/storage"
 GRAPHITE_SETTING="${GRAPHITE_HOME}/webapp/graphite"
-#GRAPHITE_ROOT="${GRAPHITE_HOME}"
+GRAPHITE_EXAMPLES="${GRAPHITE_HOME}/examples"
 
 ### check existing installation
 if [[ -d $GRAPHITE_HOME ]]; then
@@ -42,17 +42,17 @@ cp $GRAPHITE_CONF/dashboard.conf.example $GRAPHITE_CONF/dashboard.conf
 cp $GRAPHITE_CONF/graphTemplates.conf.example $GRAPHITE_CONF/graphTemplates.conf
 
 ### moving examples
-mkdir $GRAPHITE_CONF/examples
-mv $GRAPHITE_CONF/*.example $GRAPHITE_CONF/examples/
+mv $GRAPHITE_CONF/*.example $GRAPHITE_EXAMPLES
 
-### moving dir
-cd conf
 ### installing configured carbon conf files
-cp carbon/storage-schemas.conf $GRAPHITE_CONF/storage-schemas.conf
-cp carbon/storage-aggregation.conf $GRAPHITE_CONF/storage-aggregation.conf
+cp conf/carbon/storage-schemas.conf $GRAPHITE_CONF/storage-schemas.conf
+cp conf/carbon/storage-aggregation.conf $GRAPHITE_CONF/storage-aggregation.conf
 ### need minimalist local_settings
 ### you may need to edit it for email and more stuff
-cp graphite/local_settings.py $GRAPHITE_SETTING/local_settings.py
+### error on running my local_settings.py
+### using default (examples)
+cp $GRAPHITE_SETTING/local_settings.py.example $GRAPHITE_SETTING/local_settings.py
+#cp conf/graphite/local_settings.py $GRAPHITE_SETTING/local_settings.py
 # editing mysecret for local_settings.py
 #cd ${GRAPHITE_HOME}/webapp/graphite
 # edit $GRAPHITE_SETTING/local_settings.py with generated secretkey
@@ -60,7 +60,40 @@ cp graphite/local_settings.py $GRAPHITE_SETTING/local_settings.py
 # SECRET=$( cat secretkey.txt )
 #sed -e "s/mysecretkey/$SECRET/g" $GRAPHITE_SETTING/local_settings.py
 ### installing apache conf file
-cp apache2/graphite.conf /etc/apache2/sites-available/graphite.conf
+cp conf/apache2/graphite.conf /etc/apache2/sites-available/graphite.conf
+
+### moving dir
+mkdir temp
+cd temp
+
+### installing grafana
+wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.1.1-1470047149_amd64.deb
+apt-get install -y adduser libfontconfig
+dpkg -i grafana_3.1.1-1470047149_amd64.deb
+
+### installing grafana plugins
+# pie chart
+grafana-cli plugins install grafana-piechart-panel
+# diagram
+grafana-cli plugins install jdbranham-diagram-panel
+# histogram
+grafana-cli plugins install mtanda-histogram-panel
+
+### installing influxdb
+wget https://dl.influxdata.com/influxdb/releases/influxdb_1.0.2_amd64.deb
+dpkg -i influxdb_1.0.2_amd64.deb
+### see https://docs.influxdata.com/influxdb/v0.9/introduction/installation/ for config file
+# create influxdb database
+#influx << EOF
+#CREATE DATABASE cacti
+#USE cacti
+#DROP DATABASE _internal
+#EOF
+
+### installing elasticsearch
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.deb
+dpkg -i elasticsearch-5.0.0.deb
+### see https://www.elastic.co/guide/en/elasticsearch/reference/master/settings.html for config file
 
 ### creating database
 # installing mysql
@@ -108,35 +141,6 @@ chown -R www-data:www-data /opt/graphite/{storage,webapp}
 
 PYTHONPATH=$GRAPHITE_ROOT/webapp django-admin.py migrate --settings=graphite.settings --run-syncdb
 #/usr/lib/python2.7/site-packages/graphite/manage.py syncdb
-
-### installing grafana
-wget https://grafanarel.s3.amazonaws.com/builds/grafana_3.1.1-1470047149_amd64.deb
-apt-get install -y adduser libfontconfig
-dpkg -i grafana_3.1.1-1470047149_amd64.deb
-
-### installing grafana plugins
-# pie chart
-grafana-cli plugins install grafana-piechart-panel
-# diagram
-grafana-cli plugins install jdbranham-diagram-panel
-# histogram
-grafana-cli plugins install mtanda-histogram-panel
-
-### installing influxdb
-wget https://dl.influxdata.com/influxdb/releases/influxdb_1.0.2_amd64.deb
-dpkg -i influxdb_1.0.2_amd64.deb
-### see https://docs.influxdata.com/influxdb/v0.9/introduction/installation/ for config file
-# create influxdb database
-#influx << EOF
-#CREATE DATABASE cacti
-#USE cacti
-#DROP DATABASE _internal
-#EOF
-
-### installing elasticsearch
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.deb
-dpkg -i elasticsearch-5.0.0.deb
-### see https://www.elastic.co/guide/en/elasticsearch/reference/master/settings.html for config file
 
 ### running services
 a2dissite 000-default
