@@ -29,9 +29,6 @@ pip install carbon
 pip install graphite-web
 #pip install https://github.com/graphite-project/ceres/tarball/master
 
-### set up a new database and create the initial schema
-#PYTHONPATH=$GRAPHITE_HOME/webapp django-admin.py migrate --settings=graphite.settings --run-syncdb
-
 # cleaning terminal
 #clear
 
@@ -139,7 +136,8 @@ python manage.py syncdb --noinput
 chown www-data:www-data ${GRAPHITE_STORAGE}/graphite.db
 chown -R www-data:www-data /opt/graphite/{storage,webapp}
 
-PYTHONPATH=$GRAPHITE_ROOT/webapp django-admin.py migrate --settings=graphite.settings --run-syncdb
+### set up a new database and create the initial schema
+#PYTHONPATH=$GRAPHITE_HOME/webapp django-admin.py migrate --settings=graphite.settings --run-syncdb
 #/usr/lib/python2.7/site-packages/graphite/manage.py syncdb
 
 ### running services
@@ -172,7 +170,8 @@ cd ${GRAPHITE_HOME}/bin
 #and
 cd ${GRAPHITE_HOME}/webapp/graphite
 chmod +x manage.py
-./manage.py runserver
+#./manage.py runserver
+python manage.py syncdb
 
 # end of script
 echo " "
