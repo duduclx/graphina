@@ -16,9 +16,9 @@ fi
 ### update and install needed packages
 apt-get update -y
 apt-get install -y python-dev libcairo2-dev libffi-dev fontconfig apache2 libapache2-mod-wsgi
-apt-get install -y python-cairo python-django python-pip python-pyparsing python-memcache
+apt-get install -y python-cairo python-django python-pip python-pyparsing python-memcache python-mysqldb
 #apt-get install python-django-tagging
-apt-get install -y uwsgi uwsgi-plugin-python
+apt-get install -y uwsgi uwsgi-plugin-python 
 
 pip install pytz
 pip install 'django-tagging<0.4'
@@ -44,12 +44,14 @@ mv $GRAPHITE_CONF/*.example $GRAPHITE_EXAMPLES
 ### installing configured carbon conf files
 cp conf/carbon/storage-schemas.conf $GRAPHITE_CONF/storage-schemas.conf
 cp conf/carbon/storage-aggregation.conf $GRAPHITE_CONF/storage-aggregation.conf
+
 ### need minimalist local_settings
 ### you may need to edit it for email and more stuff
-### error on running my local_settings.py
+
 ### using default (examples)
-cp $GRAPHITE_SETTING/local_settings.py.example $GRAPHITE_SETTING/local_settings.py
-#cp conf/graphite/local_settings.py $GRAPHITE_SETTING/local_settings.py
+#cp $GRAPHITE_EXAMPLES/local_settings.py.example $GRAPHITE_SETTING/local_settings.py
+### using mine (mysql)
+cp conf/graphite/local_settings.py $GRAPHITE_SETTING/local_settings.py
 # editing mysecret for local_settings.py
 #cd ${GRAPHITE_HOME}/webapp/graphite
 # edit $GRAPHITE_SETTING/local_settings.py with generated secretkey
