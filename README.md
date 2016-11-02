@@ -57,12 +57,12 @@ Well, let's read the [start help](https://github.com/duduclx/graphina/blob/maste
 
 | service                 | :port                 | user          | password         | config directory    |
 | ----------------------- | --------------------- | ------------- | ---------------- | ------------------- |
-| graphite                | :80                   | root          |  <your_password> | /opt/graphite       |
+| graphite                | :80                   | root          |  your_password   | /opt/graphite       |
 | Carbon                  | :2003 :2004 :7002     |               |                  | /opt/graphite/conf  |
 | whisper                 | none /carbon:2003     |               |                  | /opt/graphite/conf  |
-| mysql                   | :3306                 | root          |  <your_password> |                     |
+| mysql                   | :3306                 | root          |  your_password   |                     |
 | grafana                 | :3000                 | admin         |  admin           | /etc/grafana        |
-| phpmyadmin              | 127.0.0.1/phpmyadmin  | root          |  <your_password> | /opt/graphite       |
+| phpmyadmin              | 127.0.0.1/phpmyadmin  | root          |  your_password   | /opt/graphite       |
 | influxdb interface      | :8086                 | admin         |  admin           | /etc/influxdb       |
 | influxdb transport      | :8083                 |               |                  | /etc/influxdb       |
 | elasticsearch interface | :9200                 | elasticsearch | elasticsearch    | /etc/elasticsearch/ |
