@@ -65,7 +65,7 @@ DEFAULT_CACHE_POLICY = [(0, 60), # default is 60 seconds
 #MEMCACHE_KEY_PREFIX = 'graphite'
 
 # Set URL_PREFIX when deploying graphite-web to a non-root location
-URL_PREFIX = '/graphite'
+#URL_PREFIX = '/graphite'
 
 # Graphite uses Django Tagging to support tags in Events. By default each
 # tag is limited to 50 characters in length.
