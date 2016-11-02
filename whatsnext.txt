@@ -1,0 +1,34 @@
+# Nice, we have it working !
+
+1. add graphite to grafana
+ * Open your favorite navigator
+ * go to http://<serverIP>:3000
+ * connect with admin / admin
+ * go to the left menu, choose "data sources", then "add"
+ * fill as it:
+ - name: graphite (or anthing else)
+ - type: graphite
+ - url: http://127.0.0.1:80
+ - access: proxy (to use grafana backend)
+ - http auth: basic auth
+ - user: <your username> (surely root or your debian username, depend of how you start the script)
+ - password: <what you have entered when starting graphite> (end of script)
+ 
+2. add influxdb to grafana
+ * go to http://<serverIP>:8083
+ * add/drop database with the help of query templates
+ * click the coil on top right
+ * add user and password to connect
+ * go back to grafana (http://<serverIP>:3000)
+ * add datasource and fill as it:
+ - name: influx (or anthing else)
+ - type: influxdb
+ - url: http://127.0.0.1:80
+ - access: proxy (to use grafana backend)
+ - http auth: basic auth
+ - user: <your username> (set few seconds earlier)
+ - password: <your password> (set few seconds earlier)
+ - database: name of the database (default is _internal)
+ - user: <your username> (set few seconds earlier)
+ - password: <your password> (set few seconds earlier)
+ - default group by time: >10s
