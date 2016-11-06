@@ -18,7 +18,13 @@ apt-get update -y
 apt-get install -y python-dev libcairo2-dev libffi-dev fontconfig apache2 libapache2-mod-wsgi
 apt-get install -y python-cairo python-django python-pip python-pyparsing python-memcache python-mysqldb
 #apt-get install python-django-tagging
-apt-get install -y uwsgi uwsgi-plugin-python 
+apt-get install -y uwsgi uwsgi-plugin-python
+apt-get install -y openjdk-8-jre wget
+
+wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb https://packages.elastic.co/logstash/2.4/debian stable main" | tee -a /etc/apt/sources.list
+apt-get update -y
+apt-get install logstash
 
 pip install pytz
 pip install 'django-tagging<0.4'
