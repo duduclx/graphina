@@ -67,6 +67,9 @@ cp conf/graphite/local_settings.py $GRAPHITE_SETTING/local_settings.py
 ### installing apache conf file
 cp conf/apache2/graphite.conf /etc/apache2/sites-available/graphite.conf
 
+# installing logstash conf
+cp conf/logstash/logstash.conf /etc/logstash/logstash.conf
+
 ### moving dir
 mkdir temp
 cd temp
@@ -99,6 +102,10 @@ dpkg -i influxdb_1.0.2_amd64.deb
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.deb
 dpkg -i elasticsearch-5.0.0.deb
 ### see https://www.elastic.co/guide/en/elasticsearch/reference/master/settings.html for config file
+
+### cleaning temp
+cd ..
+rm -R temp
 
 ### creating database
 # installing mysql
