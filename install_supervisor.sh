@@ -7,6 +7,10 @@ GRAPHITE_STORAGE="${GRAPHITE_HOME}/storage"
 GRAPHITE_SETTING="${GRAPHITE_HOME}/webapp/graphite"
 GRAPHITE_EXAMPLES="${GRAPHITE_HOME}/examples"
 
+### getting default dir
+echo "$PWD" >> pwd.txt
+DIR="$( cat pwd.txt)
+
 ### check existing installation
 if [[ -d $GRAPHITE_HOME ]]; then
   echo "Looks like you already have a Graphite installation in ${GRAPHITE_HOME}, aborting."
@@ -56,15 +60,8 @@ cp conf/carbon/storage-aggregation.conf $GRAPHITE_CONF/storage-aggregation.conf
 ### you may need to edit it for email and more stuff
 
 ### using default (examples)
-#cp $GRAPHITE_EXAMPLES/local_settings.py.example $GRAPHITE_SETTING/local_settings.py
-### using mine (mysql)
-cp conf/graphite/local_settings.py $GRAPHITE_SETTING/local_settings.py
-# editing mysecret for local_settings.py
-#cd ${GRAPHITE_HOME}/webapp/graphite
-# edit $GRAPHITE_SETTING/local_settings.py with generated secretkey
-# python manage.py generate_secret_key [--replace] [secretkey.txt]
-# SECRET=$( cat secretkey.txt )
-#sed -e "s/mysecretkey/$SECRET/g" $GRAPHITE_SETTING/local_settings.py
+cp $GRAPHITE_EXAMPLES/local_settings.py.example $GRAPHITE_SETTING/local_settings.py
+
 ### installing apache conf file
 cp conf/apache2/graphite.conf /etc/apache2/sites-available/graphite.conf
 
@@ -187,6 +184,12 @@ cd ${GRAPHITE_HOME}/bin
 cd ${GRAPHITE_HOME}/webapp/graphite
 chmod +x manage.py
 #./manage.py runserver
+python manage.py syncdb
+
+### using mysql
+cd $DIR
+cp conf/graphite/local_settings.py $GRAPHITE_SETTING/local_settings.py
+#migrate db
 python manage.py syncdb
 
 # end of script
