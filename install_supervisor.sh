@@ -9,7 +9,7 @@ GRAPHITE_EXAMPLES="${GRAPHITE_HOME}/examples"
 
 ### getting default dir
 echo "$PWD" >> pwd.txt
-DIR="$( cat pwd.txt)
+DIR="$( cat pwd.txt)"
 
 ### check existing installation
 if [[ -d $GRAPHITE_HOME ]]; then
