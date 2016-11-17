@@ -15,6 +15,7 @@ fi
 
 ### update and install needed packages
 apt-get update -y
+apt-get install apt-transport-https
 apt-get install -y python-dev libcairo2-dev libffi-dev fontconfig apache2 libapache2-mod-wsgi
 apt-get install -y python-cairo python-django python-pip python-pyparsing python-memcache python-mysqldb
 #apt-get install python-django-tagging
