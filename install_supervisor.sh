@@ -26,7 +26,7 @@ apt-get install -y python-cairo python-django python-pip python-pyparsing python
 apt-get install -y uwsgi uwsgi-plugin-python
 apt-get install -y openjdk-8-jre wget
 
-wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add -
 echo "deb https://packages.elastic.co/logstash/2.4/debian stable main" | tee -a /etc/apt/sources.list
 apt-get update -y
 apt-get install logstash
