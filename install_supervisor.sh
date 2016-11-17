@@ -109,7 +109,7 @@ rm -R temp
 
 ### creating database
 # installing mysql
-apt-get -y install mysql-server
+apt-get install mysql-server
 
 # cleaning terminal
 #clear
