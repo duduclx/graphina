@@ -136,11 +136,11 @@ service apache2 restart
 #clear
 
 ### instructions for phpmyadmin
-echo "Select apache2 with the spacebar."
-echo "When asked to configure database for phpmyadmin with dbconfig-common,"
-echo "select yes."
+#echo "Select apache2 with the spacebar."
+#echo "When asked to configure database for phpmyadmin with dbconfig-common,"
+#echo "select yes."
 
-sleep 10
+#sleep 10
 apt-get -y install phpmyadmin
 
 ### set pythonpath for django to run
