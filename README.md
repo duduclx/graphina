@@ -13,12 +13,12 @@ see details for more informations.
 - [x] have a working graphite
 - [x] have a working carbon
 - [x] have custom config for carbon
-- [ ] have a working collectd
-- [ ] have custom config for collectd
+- [x] have a working collectd
+- [ ] have conf files
 - [x] have a working influxdb
-- [ ] have custom config file for influxdb
+- [x] have a working logstash
+- [x] have some logstash plugins for elasticsearch
 - [ ] have a working elasticsearch
-- [ ] have custom config file for elasticsearch
 - [x] have a working phpmyadmin
 - [x] have a working mysql
 - [x] have a working grafana
@@ -44,14 +44,15 @@ see details for more informations.
 # How to use:
 open terminal and type:
 ```
-git clone https://github.com/duduclx/graphina.git
+git clone https://github.com/duduclx/saphir.git
+cd saphir
 chmod a+x install_supervisor.sh
 ./install_supervisor.sh
 ```
 
 # What's next:
 
-Well, let's read the [start help](https://github.com/duduclx/graphina/blob/master/whatsnext.txt)
+Well, let's read the [start help](https://github.com/duduclx/saphir/blob/master/whatsnext.txt)
 
 # list of services:
 
@@ -63,10 +64,9 @@ Well, let's read the [start help](https://github.com/duduclx/graphina/blob/maste
 | mysql                   | :3306                 | root          |  your_password   |                     |
 | grafana                 | :3000                 | admin         |  admin           | /etc/grafana        |
 | phpmyadmin              | 127.0.0.1/phpmyadmin  | root          |  your_password   | /opt/graphite       |
-| influxdb interface      | :8086                 | admin         |  admin           | /etc/influxdb       |
-| influxdb transport      | :8083                 |               |                  | /etc/influxdb       |
+| influxdb interface      | :8083                 | admin         |  admin           | /etc/influxdb       |
+| influxdb transport      | :8086                 |               |                  | /etc/influxdb       |
 | elasticsearch interface | :9200                 | elasticsearch | elasticsearch    | /etc/elasticsearch/ |
 | elasticsearch transport | :9300                 |               |                  | /etc/elasticsearch/ |
 | logstash                | :5044                 |               |                  | /opt/logstash       |
-| collectd                | :xxxx                 |               |                  | /etc/collectd       |
-
+| collectd                | :25827                |               |                  | /etc/collectd       |
