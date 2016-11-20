@@ -17,18 +17,21 @@ if [[ -d $GRAPHITE_HOME ]]; then
   exit 1
 fi
 
+### adding backports to sources
+echo "deb http://http.debian.net/debian jessie-backports main" | tee -a /etc/apt/sources.list
+apt-get update
+
 ### update and install needed packages
-apt-get install apt-transport-https
-apt-get update -y
+apt-get install -y apt-transport-https zip curl wget
 apt-get install -y python-dev libcairo2-dev libffi-dev fontconfig apache2 libapache2-mod-wsgi
 apt-get install -y python-cairo python-django python-pip python-pyparsing python-memcache python-mysqldb
 #apt-get install python-django-tagging
 apt-get install -y uwsgi uwsgi-plugin-python
-apt-get install -y openjdk-8-jre wget
+apt-get install -y openjdk-8-jre-headless openjdk-8-jre
 
 wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | apt-key add -
 echo "deb https://packages.elastic.co/logstash/2.4/debian stable main" | tee -a /etc/apt/sources.list
-apt-get update -y
+apt-get update
 apt-get install logstash
 
 pip install pytz
@@ -65,8 +68,20 @@ cp $GRAPHITE_EXAMPLES/local_settings.py.example $GRAPHITE_SETTING/local_settings
 ### installing apache conf file
 cp conf/apache2/graphite.conf /etc/apache2/sites-available/graphite.conf
 
+# installing collectd
+apt-get install collectd
+# need update conf
+#mv /etc/collectd/collectd.conf /etc/collectd/collectd.conf.default
+#cp conf/collectd/collectd.conf /etc/collectd/collectd.conf
+#cp conf/collectd/network.conf /etc/collectd/collectd.conf.d/network.conf
+
 # installing logstash conf
 cp conf/logstash/logstash.conf /etc/logstash/logstash.conf
+# installing logstash plugins
+#/opt/logstash/bin/logstash-plugin install logstash-input-LDAPSearch
+/opt/logstash/bin/logstash-plugin install logstash-filter-translate
+/opt/logstash/bin/logstash-plugin install logstash-filter-cidr
+/opt/logstash/bin/logstash-plugin install logstash-filter-elasticsearch
 
 ### moving dir
 mkdir temp
@@ -97,13 +112,22 @@ dpkg -i influxdb_1.0.2_amd64.deb
 #EOF
 
 ### installing elasticsearch
-wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.0.deb
-dpkg -i elasticsearch-5.0.0.deb
-### see https://www.elastic.co/guide/en/elasticsearch/reference/master/settings.html for config file
+wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb http://packages.elasticsearch.org/elasticsearch/1.5/debian stable main" > /etc/apt/sources.list.d/elasticsearch.list
+# from apt
+sudo apt-get update && sudo apt-get install elasticsearch
+# from deb
+#wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.1.deb
+#dpkg -i elasticsearch-5.0.1.deb
 
 ### cleaning temp
 cd ..
 rm -R temp
+
+### installing elasticsearch conf if installed from deb
+# see https://www.elastic.co/guide/en/elasticsearch/reference/master/settings.html for config file
+#mv /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.default
+#cp conf/elasticsearch/elacticsearch.yml /etc/elasticsearch/elasticsearch.yml
 
 ### creating database
 # installing mysql
@@ -138,7 +162,7 @@ service apache2 restart
 #echo "select yes."
 
 #sleep 10
-apt-get -y install phpmyadmin
+apt-get install phpmyadmin
 
 ### set pythonpath for django to run
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages
@@ -173,9 +197,9 @@ update-rc.d grafana-server defaults
 service influxdb start
 
 ### start elasticsearch and make it running at boot
-service elasticsearch start
-update-rc.d elasticsearch defaults
-/etc/init.d/elasticsearch start
+/bin/systemctl daemon-reload
+/bin/systemctl enable elasticsearch.service
+systemctl start elasticsearch.service
 
 ### run graphite
 cd ${GRAPHITE_HOME}/bin
