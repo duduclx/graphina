@@ -112,7 +112,7 @@ dpkg -i influxdb_1.0.2_amd64.deb
 #EOF
 
 ### installing elasticsearch
-wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
 echo "deb http://packages.elasticsearch.org/elasticsearch/1.5/debian stable main" > /etc/apt/sources.list.d/elasticsearch.list
 # from apt
 sudo apt-get update && sudo apt-get install elasticsearch
