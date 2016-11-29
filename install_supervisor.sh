@@ -71,9 +71,9 @@ cp conf/apache2/graphite.conf /etc/apache2/sites-available/graphite.conf
 # installing collectd
 apt-get install collectd
 # need update conf
-#mv /etc/collectd/collectd.conf /etc/collectd/collectd.conf.default
-#cp conf/collectd/collectd.conf /etc/collectd/collectd.conf
-#cp conf/collectd/network.conf /etc/collectd/collectd.conf.d/network.conf
+mv /etc/collectd/collectd.conf /etc/collectd/collectd.conf.default
+cp conf/collectd/collectd.conf /etc/collectd/collectd.conf
+cp conf/collectd/network.conf /etc/collectd/collectd.conf.d/network.conf
 
 # installing logstash conf
 cp conf/logstash/logstash.conf /etc/logstash/logstash.conf
