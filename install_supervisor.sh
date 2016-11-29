@@ -112,22 +112,37 @@ dpkg -i influxdb_1.0.2_amd64.deb
 #EOF
 
 ### installing elasticsearch
-wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
-echo "deb http://packages.elasticsearch.org/elasticsearch/1.5/debian stable main" > /etc/apt/sources.list.d/elasticsearch.list
+#wget -qO - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add -
+#echo "deb http://packages.elasticsearch.org/elasticsearch/1.5/debian stable main" > /etc/apt/sources.list.d/elasticsearch.list
 # from apt
-sudo apt-get update && sudo apt-get install elasticsearch
+#sudo apt-get update && sudo apt-get install elasticsearch
 # from deb
-#wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.1.deb
-#dpkg -i elasticsearch-5.0.1.deb
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.0.1.deb
+dpkg -i elasticsearch-5.0.1.deb
 
 ### cleaning temp
 cd ..
 rm -R temp
 
-### installing elasticsearch conf if installed from deb
-# see https://www.elastic.co/guide/en/elasticsearch/reference/master/settings.html for config file
-#mv /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.default
-#cp conf/elasticsearch/elacticsearch.yml /etc/elasticsearch/elasticsearch.yml
+### creating correct path
+mkdir -p /usr/share/elasticsearch/config/scripts
+
+### installing conf files
+cp conf/elasticsearch/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
+cp /etc/elasticsearch/logging.yml /usr/share/elasticsearch/config/logging.yml
+cp /etc/elasticsearch/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml.default
+
+### setting permissions
+chmod g+rwx /usr/share/elasticsearch/config/elasticsearch.yml /usr/share/elasticsearch/config/logging.yml 
+chmod o+rwx /usr/share/elasticsearch/config/elasticsearch.yml /usr/share/elasticsearch/config/logging.yml
+
+### start elasticsearch and make it running at boot
+/bin/systemctl daemon-reload
+/bin/systemctl enable elasticsearch.service
+systemctl start elasticsearch.service
+
+### checking elasticsearch
+## curl -XGET http://localhost:9200
 
 ### creating database
 # installing mysql
