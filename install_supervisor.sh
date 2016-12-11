@@ -88,7 +88,7 @@ mkdir temp
 cd temp
 
 ### installing grafana
-wget https://grafanarel.s3.amazonaws.com/builds/grafana_4.0.0-1480439068_amd64.deb
+wget https://grafanarel.s3.amazonaws.com/builds/grafana_latest_amd64.deb
 apt-get install -y adduser libfontconfig
 dpkg -i grafana_4.0.0-1480439068_amd64.deb
 
